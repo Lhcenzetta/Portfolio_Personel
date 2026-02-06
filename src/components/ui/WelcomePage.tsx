@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import Background3D from "@/components/three/Background3D";
 
 export default function WelcomePage({ onComplete }: { onComplete: () => void }) {
     const [loading, setLoading] = useState(true);
@@ -41,7 +40,6 @@ export default function WelcomePage({ onComplete }: { onComplete: () => void }) 
 
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black overflow-hidden">
-            <Background3D />
 
             <div className="relative flex flex-col items-center w-full max-w-[90vw] px-4">
                 <div className="flex flex-wrap justify-center gap-x-1 md:gap-x-2 text-center leading-none">
