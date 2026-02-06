@@ -2,16 +2,32 @@
 
 import { motion } from "framer-motion";
 import { Terminal, Send, Github, Linkedin, Mail, Loader2, CheckCircle2 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Contact() {
-    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "limited">("idle");
+    const [submissions, setSubmissions] = useState(0);
+
+    useEffect(() => {
+        const count = localStorage.getItem("contact_submissions");
+        if (count) setSubmissions(parseInt(count));
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        // Honeypot check
+        const formData = new FormData(e.currentTarget);
+        if (formData.get("botcheck")) return;
+
+        // Rate limit check
+        if (submissions >= 2) {
+            setStatus("limited");
+            return;
+        }
+
         setStatus("loading");
 
-        const formData = new FormData(e.currentTarget);
         const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "32b36da2-f4fb-43a8-bc76-6ce7d5fd7f00";
         formData.append("access_key", accessKey);
 
@@ -24,6 +40,9 @@ export default function Contact() {
             const data = await response.json();
 
             if (data.success) {
+                const newCount = submissions + 1;
+                setSubmissions(newCount);
+                localStorage.setItem("contact_submissions", newCount.toString());
                 setStatus("success");
             } else {
                 setStatus("error");
@@ -82,6 +101,7 @@ export default function Contact() {
                                 ) : (
                                     <form onSubmit={handleSubmit} className="space-y-6">
                                         <input type="hidden" name="to" value="lhsenztta65@gmail.com" />
+                                        <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div className="space-y-2">
@@ -143,6 +163,15 @@ export default function Contact() {
                                                 <p className="text-center text-red-400 text-xs font-medium">A transmission error occurred.</p>
                                                 <p className="text-center text-zinc-500 text-[10px] leading-relaxed">
                                                     Ensure you have replaced the <code className="text-emerald-400">access_key</code> in <code className="text-white">Contact.tsx</code> with a real one from <a href="https://web3forms.com" target="_blank" className="underline hover:text-white transition-colors">Web3Forms</a>.
+                                                </p>
+                                            </div>
+                                        )}
+
+                                        {status === "limited" && (
+                                            <div className="p-4 rounded-xl bg-amber-500/5 border border-amber-500/10 space-y-2">
+                                                <p className="text-center text-amber-400 text-xs font-medium">Transmission Limit Reached</p>
+                                                <p className="text-center text-zinc-500 text-[10px] leading-relaxed">
+                                                    To prevent spam, transmissions are limited to two per session. Please use direct email for further communication.
                                                 </p>
                                             </div>
                                         )}
