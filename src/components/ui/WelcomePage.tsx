@@ -1,7 +1,60 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import * as THREE from "three";
+
+function DataFlowParticles() {
+    const count = 1000;
+    const points = useRef<THREE.Points>(null);
+
+    const particles = useMemo(() => {
+        const positions = new Float32Array(count * 3);
+        const velocities = new Float32Array(count);
+        for (let i = 0; i < count; i++) {
+            positions[i * 3] = (Math.random() - 0.5) * 10;
+            positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+            velocities[i] = 0.01 + Math.random() * 0.02;
+        }
+        return { positions, velocities };
+    }, []);
+
+    useFrame((state) => {
+        if (!points.current) return;
+        const positions = points.current.geometry.attributes.position.array as Float32Array;
+        for (let i = 0; i < count; i++) {
+            positions[i * 3 + 1] -= particles.velocities[i]; // Move down
+            if (positions[i * 3 + 1] < -5) {
+                positions[i * 3 + 1] = 5; // Reset to top
+            }
+        }
+        points.current.geometry.attributes.position.needsUpdate = true;
+        points.current.rotation.y += 0.001;
+    });
+
+    return (
+        <points ref={points}>
+            <bufferGeometry>
+                <bufferAttribute
+                    attach="attributes-position"
+                    count={count}
+                    array={particles.positions}
+                    itemSize={3}
+                    args={[particles.positions, 3]}
+                />
+            </bufferGeometry>
+            <pointsMaterial
+                size={0.015}
+                color="#10b981"
+                transparent
+                opacity={0.6}
+                sizeAttenuation
+            />
+        </points>
+    );
+}
 
 export default function WelcomePage({ onComplete }: { onComplete: () => void }) {
     const [loading, setLoading] = useState(true);
@@ -9,9 +62,8 @@ export default function WelcomePage({ onComplete }: { onComplete: () => void }) 
     const name = "LAHCEN AIT ZETTA";
 
     useEffect(() => {
-        // Progress counter animation
-        const duration = 3000; // 3 seconds
-        const interval = 50; // Update every 50ms
+        const duration = 2500;
+        const interval = 50;
         const steps = duration / interval;
         const increment = 100 / steps;
 
@@ -26,11 +78,10 @@ export default function WelcomePage({ onComplete }: { onComplete: () => void }) 
             });
         }, interval);
 
-        // Completion timeout
         const completeTimer = setTimeout(() => {
             setLoading(false);
-            setTimeout(onComplete, 1000);
-        }, duration + 500); // Slight buffer after 100%
+            setTimeout(onComplete, 800);
+        }, duration + 300);
 
         return () => {
             clearInterval(timer);
@@ -40,24 +91,31 @@ export default function WelcomePage({ onComplete }: { onComplete: () => void }) 
 
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black overflow-hidden">
+            {/* 3D Background */}
+            <div className="absolute inset-0 opacity-40">
+                <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+                    <ambientLight intensity={0.5} />
+                    <DataFlowParticles />
+                </Canvas>
+            </div>
 
-            <div className="relative flex flex-col items-center w-full max-w-[90vw] px-4">
+            <div className="relative flex flex-col items-center w-full max-w-[90vw] px-4 z-10">
                 <div className="flex flex-wrap justify-center gap-x-1 md:gap-x-2 text-center leading-none">
                     {name.split("").map((char, index) => (
                         <motion.span
                             key={index}
-                            initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+                            initial={{ opacity: 0, scale: 0.8, filter: "blur(12px)" }}
                             animate={{
                                 opacity: 1,
-                                y: 0,
+                                scale: 1,
                                 filter: "blur(0px)",
                                 transition: {
                                     duration: 0.8,
-                                    delay: index * 0.05,
-                                    ease: [0.2, 0, 0.2, 1]
+                                    delay: index * 0.04,
+                                    ease: [0.23, 1, 0.32, 1]
                                 }
                             }}
-                            className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tighter text-white"
+                            className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter text-white"
                         >
                             {char === " " ? "\u00A0" : char}
                         </motion.span>
@@ -65,30 +123,24 @@ export default function WelcomePage({ onComplete }: { onComplete: () => void }) 
                 </div>
 
                 <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: "100%" }}
-                    transition={{ duration: 2.5, ease: "easeInOut" }}
-                    className="h-px bg-white/20 mt-4 sm:mt-8"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 2, ease: "circOut" }}
+                    className="h-[2px] w-48 bg-emerald-500/50 mt-12 mb-8 origin-center"
                 />
 
-                <div className="mt-6 sm:mt-8 w-full max-w-xs h-1 bg-zinc-800 rounded-full overflow-hidden relative">
+                <div className="w-full max-w-xs h-[1px] bg-zinc-800/50 rounded-full overflow-hidden relative">
                     <motion.div
-                        className="h-full bg-emerald-500 relative"
+                        className="h-full bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]"
                         initial={{ width: "0%" }}
                         animate={{ width: `${progress}%` }}
-                        transition={{ ease: "linear", duration: 0.1 }} // Smooth updates based on progress state
-                    >
-                        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-emerald-200 to-transparent opacity-50" />
-                    </motion.div>
+                        transition={{ ease: "linear", duration: 0.1 }}
+                    />
                 </div>
 
-                <div className="mt-3 sm:mt-4 flex items-center justify-between w-full max-w-xs text-[10px] sm:text-xs font-mono uppercase tracking-widest">
-                    <span className="text-emerald-500 animate-pulse">
-                        System_Loading
-                    </span>
-                    <span className="text-white font-bold">
-                        {Math.round(progress).toString().padStart(3, '0')}%
-                    </span>
+                <div className="mt-4 flex items-center justify-between w-full max-w-xs text-[9px] font-mono tracking-[0.3em] uppercase">
+                    <span className="text-emerald-500/80 animate-pulse">Initializing_Engine</span>
+                    <span className="text-white font-black">{Math.round(progress)}%</span>
                 </div>
             </div>
 

@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import ProfileCard from "@/components/ui/ProfileCard";
 import NeuralBackground from "@/components/ui/NeuralBackground";
+import LocalGreeting from "@/components/ui/LocalGreeting";
 
 export default function Hero() {
 
     return (
-        <section className="relative min-h-screen flex items-center py-20 overflow-hidden">
+        <section className="relative min-h-screen flex items-center pt-8 pb-20 overflow-hidden">
             {/* 3D Background */}
             <NeuralBackground />
 
@@ -20,6 +21,16 @@ export default function Hero() {
 
                         {/* Main Headings */}
                         <div className="space-y-6 lg:space-y-8 w-full text-center lg:text-left">
+                            {/* Local Greeting added here */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8 }}
+                                className="mb-4" // Added margin-bottom for spacing
+                            >
+                                <LocalGreeting />
+                            </motion.div>
+
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -30,22 +41,22 @@ export default function Hero() {
                                 AI Engineer & Full-Stack Developer
                             </motion.div>
 
-                            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-[1.1] lg:leading-[1]">
-                                Engineering <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500 bg-[length:200%_auto] animate-shimmer">
-                                    Scalable Intelligence.
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white leading-[0.9] lg:leading-[0.85] mb-8">
+                                AI & Full-Stack <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-600 bg-[length:200%_auto] animate-shimmer">
+                                    Engineering.
                                 </span>
                             </h1>
 
                             {/* Refined Subheadline (Impactful Value Prop) */}
-                            <motion.h2
+                            <motion.p
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
-                                className="text-xl md:text-2xl lg:text-3xl font-semibold text-zinc-300 leading-tight max-w-2xl mx-auto lg:mx-0"
+                                className="text-lg md:text-xl lg:text-2xl font-medium text-zinc-400 leading-relaxed max-w-2xl mx-auto lg:mx-0"
                             >
-                                I bridge the gap between <span className="text-white">complex AI research</span> and <span className="text-white">production-grade software</span>.
-                            </motion.h2>
+                                Designing high-performance <span className="text-white font-bold">ML Pipelines</span> and robust <span className="text-white font-bold">Full-Stack Architectures</span> for the era of Generative AI.
+                            </motion.p>
                         </div>
 
                         {/* Description */}
@@ -69,11 +80,11 @@ export default function Hero() {
                                 whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(16, 185, 129, 0.2)" }}
                                 whileTap={{ scale: 0.95 }}
                                 href="#projects"
-                                className="group relative flex items-center justify-center px-10 py-5 rounded-2xl font-bold text-sm sm:text-base transition-all duration-300 bg-white text-black overflow-hidden"
+                                className="group relative flex items-center justify-center px-8 py-4 rounded-2xl font-bold text-xs sm:text-sm transition-all duration-300 bg-white text-black overflow-hidden"
                             >
                                 <span className="relative flex items-center gap-2">
                                     Explore Projects
-                                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                 </span>
                             </motion.a>
 
@@ -81,7 +92,7 @@ export default function Hero() {
                                 whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
                                 whileTap={{ scale: 0.95 }}
                                 href="#contact"
-                                className="group flex items-center justify-center px-10 py-5 rounded-2xl font-bold text-sm sm:text-base border border-white/10 text-white backdrop-blur-sm transition-all duration-300"
+                                className="group flex items-center justify-center px-8 py-4 rounded-2xl font-bold text-xs sm:text-sm border border-white/10 text-white backdrop-blur-sm transition-all duration-300"
                             >
                                 Contact Me
                             </motion.a>

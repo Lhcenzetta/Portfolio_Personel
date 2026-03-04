@@ -8,21 +8,21 @@ const testimonials = [
         name: "Yassine B.",
         role: "Lead ML Engineer @ TechScale",
         content: "Lahcen's ability to bridge the gap between AI research and production-ready software is exceptional. He delivered our RAG architecture ahead of schedule with 95% accuracy.",
-        avatar: "Y",
+        avatar: "/Users/lait-zet/.gemini/antigravity/brain/5f51d3c7-f794-4c7a-b666-73cebf79854b/avatar_yassine_1772665531915.png",
         rating: 5
     },
     {
         name: "Sarah M.",
         role: "CTO @ DataFirst",
         content: "A brilliant developer who understands the nuances of MLOps. His work on our automated NLP pipelines saved us hundreds of hours in manual data processing.",
-        avatar: "S",
+        avatar: "/Users/lait-zet/.gemini/antigravity/brain/5f51d3c7-f794-4c7a-b666-73cebf79854b/avatar_sarah_1772665560041.png",
         rating: 5
     },
     {
         name: "Karim A.",
         role: "Senior Full-Stack Dev",
         content: "Collaborating with Lahcen was a pleasure. His technical depth in both backend scaling and machine learning is a rare and valuable asset to any team.",
-        avatar: "K",
+        avatar: "/Users/lait-zet/.gemini/antigravity/brain/5f51d3c7-f794-4c7a-b666-73cebf79854b/avatar_karim_1772665572419.png",
         rating: 5
     }
 ];
@@ -67,8 +67,12 @@ export default function Testimonials() {
                             </p>
 
                             <div className="flex items-center gap-4">
-                                <div className="h-12 w-12 rounded-full bg-zinc-800 border border-white/10 flex items-center justify-center text-white font-bold">
-                                    {testimonial.avatar}
+                                <div className="h-12 w-12 rounded-full border border-white/10 overflow-hidden">
+                                    <img
+                                        src={testimonial.avatar}
+                                        alt={testimonial.name}
+                                        className="h-full w-full object-cover"
+                                    />
                                 </div>
                                 <div>
                                     <h4 className="text-white font-bold text-sm">{testimonial.name}</h4>

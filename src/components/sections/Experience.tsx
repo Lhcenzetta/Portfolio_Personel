@@ -25,7 +25,7 @@ const experiences = [
     {
         role: "AI & Data Engineering",
         company: "Independent Projects",
-        date: "2024 – Present",
+        date: "2024",
         description: [
             "Designed and implemented AI systems with a focus on clean architecture and real-world usage",
             "Built machine learning pipelines including data preprocessing, training, evaluation, and deployment",
@@ -38,7 +38,7 @@ const experiences = [
     {
         role: "Full-Stack Web Development",
         company: "Production-Oriented Applications",
-        date: "2023 – Present",
+        date: "2023",
         description: [
             "Built full-stack web applications using React (frontend) and Python backends (FastAPI / Flask)",
             "Implemented authentication, APIs, database models, and file uploads",
@@ -108,6 +108,7 @@ export default function Experience() {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         href="/Lahcen_AitZetta_AENG.pdf"
+                        download="Lahcen_AitZetta_AENG.pdf"
                         target="_blank"
                         className="group relative inline-flex items-center justify-center w-full sm:w-auto gap-3 px-8 py-4 rounded-full font-semibold text-sm transition-all duration-300 overflow-hidden"
                     >
