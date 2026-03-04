@@ -3,88 +3,93 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import ProfileCard from "@/components/ui/ProfileCard";
+import NeuralBackground from "@/components/ui/NeuralBackground";
 
 export default function Hero() {
 
     return (
-        <section className="relative min-h-[85vh] flex items-center py-20">
-            <div className="container mx-auto px-4 md:px-8">
+        <section className="relative min-h-screen flex items-center py-20 overflow-hidden">
+            {/* 3D Background */}
+            <NeuralBackground />
+
+            <div className="container mx-auto px-4 md:px-8 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start lg:items-center">
 
                     {/* Left Column: Intro & CTAs */}
-                    <div className="flex flex-col items-start text-left space-y-8">
+                    <div className="flex flex-col items-start text-left space-y-10">
 
                         {/* Main Headings */}
-                        <div className="space-y-4 lg:space-y-6 w-full text-center lg:text-left">
-                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] lg:leading-[0.9]">
-                                Hi, I&apos;m <br className="lg:hidden" />
-                                <motion.span
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.8, delay: 0.2 }}
-                                    className="lg:hidden relative inline-block"
-                                >
-                                    <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-400 to-white bg-[length:200%_auto] animate-shimmer">
-                                        Lahcen Ait Zetta
-                                    </span>
-                                    {/* Subtle Glow Backdrop */}
-                                    <span className="absolute inset-0 blur-2xl bg-white/5 -z-10" />
-                                </motion.span>
-                                <span className="hidden lg:inline text-white lg:text-transparent lg:bg-clip-text lg:bg-gradient-to-r lg:from-white lg:to-zinc-500">Lahcen</span>
+                        <div className="space-y-6 lg:space-y-8 w-full text-center lg:text-left">
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8 }}
+                                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2"
+                            >
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                AI Engineer & Full-Stack Developer
+                            </motion.div>
+
+                            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-[1.1] lg:leading-[1]">
+                                Engineering <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500 bg-[length:200%_auto] animate-shimmer">
+                                    Scalable Intelligence.
+                                </span>
                             </h1>
 
-                            {/* Mobile Subheadline */}
-                            <h2 className="lg:hidden text-lg sm:text-xl font-medium text-zinc-300 leading-tight">
-                                I design and develop intelligent systems using <span className="text-white font-semibold underline decoration-zinc-700 underline-offset-4">data</span>, <span className="text-white font-semibold underline decoration-zinc-700 underline-offset-4">machine learning</span>, and <span className="text-white font-semibold underline decoration-zinc-700 underline-offset-4">software engineering</span>.
-                            </h2>
-
-                            {/* Desktop Subheadline */}
-                            <h2 className="hidden lg:block text-xl md:text-2xl lg:text-3xl font-semibold text-zinc-300 leading-tight max-w-3xl">
-                                I design and develop intelligent systems using <span className="text-white font-semibold">data</span>, <span className="text-white font-semibold">machine learning</span>, and <span className="text-white font-semibold">software engineering</span>.
-                            </h2>
+                            {/* Refined Subheadline (Impactful Value Prop) */}
+                            <motion.h2
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
+                                className="text-xl md:text-2xl lg:text-3xl font-semibold text-zinc-300 leading-tight max-w-2xl mx-auto lg:mx-0"
+                            >
+                                I bridge the gap between <span className="text-white">complex AI research</span> and <span className="text-white">production-grade software</span>.
+                            </motion.h2>
                         </div>
 
-                        {/* Mobile Description */}
-                        <div className="lg:hidden w-full text-center">
-                            <p className="text-sm sm:text-base text-zinc-400 max-w-2xl leading-relaxed font-normal mx-auto opacity-80">
-                                AI Engineer & Full-Stack Developer specializing in scalable machine learning applications and modern web technologies.
-                            </p>
-                        </div>
-
-                        {/* Desktop Description */}
-                        <p className="hidden lg:block text-base md:text-lg text-zinc-400 max-w-lg leading-relaxed font-normal">
-                            AI Engineer & Full-Stack Developer specializing in scalable machine learning applications and modern web technologies.
-                        </p>
+                        {/* Description */}
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                            className="text-base md:text-lg text-zinc-400 max-w-lg leading-relaxed font-normal text-center lg:text-left mx-auto lg:mx-0"
+                        >
+                            Specializing in <span className="text-zinc-200">MLOps</span>, <span className="text-zinc-200">Distributed Systems</span>, and <span className="text-zinc-200">Modern Web Architectures</span> to build the next generation of data-driven products.
+                        </motion.p>
 
                         {/* CTAs */}
-                        <div className="flex flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 pt-4 w-full">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.6 }}
+                            className="flex flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 pt-4 w-full"
+                        >
                             <motion.a
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
+                                whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(16, 185, 129, 0.2)" }}
+                                whileTap={{ scale: 0.95 }}
                                 href="#projects"
-                                className="group relative flex items-center justify-center flex-1 sm:flex-initial px-8 py-4 rounded-full font-semibold text-sm sm:text-base transition-all duration-300"
+                                className="group relative flex items-center justify-center px-10 py-5 rounded-2xl font-bold text-sm sm:text-base transition-all duration-300 bg-white text-black overflow-hidden"
                             >
-                                <div className="absolute inset-0 bg-white rounded-full transition-transform group-hover:scale-105" />
-                                <span className="relative text-black flex items-center gap-2">
-                                    View Work
-                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                <span className="relative flex items-center gap-2">
+                                    Explore Projects
+                                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </span>
                             </motion.a>
 
                             <motion.a
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
+                                whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.1)" }}
+                                whileTap={{ scale: 0.95 }}
                                 href="#contact"
-                                className="group relative flex items-center justify-center flex-1 sm:flex-initial px-8 py-4 rounded-full font-semibold text-sm sm:text-base transition-all duration-300"
+                                className="group flex items-center justify-center px-10 py-5 rounded-2xl font-bold text-sm sm:text-base border border-white/10 text-white backdrop-blur-sm transition-all duration-300"
                             >
-                                <div className="absolute inset-0 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm transition-colors group-hover:bg-white/10 group-hover:border-white/20" />
-                                <span className="relative text-white">Contact</span>
+                                Contact Me
                             </motion.a>
-                        </div>
+                        </motion.div>
                     </div>
 
                     {/* Right Column: Profile Card */}
-                    <div className="flex w-full justify-center lg:justify-end mt-8 lg:mt-0">
+                    <div className="flex w-full justify-center lg:justify-end mt-12 lg:mt-0">
                         <ProfileCard />
                     </div>
 

@@ -9,6 +9,9 @@ import Sidebar from "@/components/ui/Sidebar";
 import Hero from "@/components/sections/Hero";
 import Experience from "@/components/sections/Experience";
 import Projects from "@/components/sections/Projects";
+import SkillMatrix from "@/components/sections/SkillMatrix";
+import Blog from "@/components/sections/Blog";
+import Testimonials from "@/components/sections/Testimonials";
 import Contact from "@/components/sections/Contact";
 import MobileNav from "@/components/ui/MobileNav";
 
@@ -79,7 +82,10 @@ export default function Home() {
             <div className="px-6 pb-24 pt-4 md:px-12 md:pb-20 md:pt-8 max-w-6xl mx-auto space-y-20 md:space-y-28">
               <Hero />
               <Projects />
+              <SkillMatrix />
               <Experience />
+              <Blog />
+              <Testimonials />
               <Contact />
             </div>
           </div>
