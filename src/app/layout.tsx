@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Lahcen Ait Zetta | AI & Full-Stack Engineer",
   description:
-    "Portfolio of Lahcen Ait Zetta, specializing in AI, Machine Learning, and Full-Stack Development.",
+    "AI Engineer & Full-Stack Developer specializing in scalable machine learning applications and modern web technologies. Explore the portfolio of Lahcen Ait Zetta.",
 };
 
 export default function RootLayout({

@@ -5,46 +5,46 @@ import { ExternalLink, Github, Folder } from "lucide-react";
 
 const projects = [
     {
-        title: "RetentionAI: Employee Attrition Predictor & HR Assistant",
-        category: "Full-Stack AI",
-        description: "An AI-powered HR assistant that predicts employee attrition and provides intelligent retention strategies using machine learning and LLM integration.",
+        title: "HR-Pulse-cloud-IA-Devops: Cloud-Native HR Data Engineering",
+        category: "Cloud & AI",
+        description: "A comprehensive Data Engineering and AI solution designed to modernize recruitment by transforming raw job data into a structured knowledge base with real-time salary predictions.",
         highlights: [
-            "Developed ML model using Scikit-learn with high accuracy",
-            "Integrated Google Gemini AI for personalized recommendations",
-            "Containerized with Docker & Docker Compose"
+            "Automated Skill Extraction using Azure AI Text Analytics",
+            "Salary Prediction with Scikit-learn on Azure SQL Database",
+            "End-to-End Observability with OpenTelemetry and Jaeger"
         ],
-        impact: "Reduces employee turnover by up to 30%",
-        tags: ["FastAPI", "Next.js", "Scikit-learn", "Google Gemini", "Docker", "PostgreSQL"],
-        link: "https://github.com/Lhcenzetta/RetentionAI-Employee-Attrition-Predictor-HR-Assistant",
-        github: "https://github.com/Lhcenzetta/RetentionAI-Employee-Attrition-Predictor-HR-Assistant"
+        impact: "Automates data extraction and salary estimates in real-time",
+        tags: ["FastAPI", "Next.js", "Azure Cloud", "Docker", "OpenTelemetry", "Terraform"],
+        link: "https://github.com/Lhcenzetta/HR-Pulse-cloud-IA-Devops",
+        github: "https://github.com/Lhcenzetta/HR-Pulse-cloud-IA-Devops"
     },
     {
-        title: "RaG-IT-assistant: Intelligent IT Support Assistant",
-        category: "AI/ML",
-        description: "An internal assistant powered by Retrieval-Augmented Generation (RAG) that answers IT technicians' questions based on organizational documentation.",
+        title: "pipeline-NLP-avec-MLOps: Automated NLP Pipeline",
+        category: "MLOps",
+        description: "An MLOps pipeline for classifying support tickets from customer emails, demonstrating robust practices for machine learning operations and model supervision.",
         highlights: [
-            "Implemented RAG pipeline for processing PDF support materials",
-            "Used K-means clustering & Chroma for document retrieval",
-            "Natural Language Processing for complex IT procedures"
+            "Hugging Face transformer embeddings for NLP preprocessing",
+            "MLflow for experiment tracking and model serving via FastAPI",
+            "Monitoring with Evidently AI, Prometheus, and Grafana"
         ],
-        impact: "Significantly reduces IT support response time",
-        tags: ["FastAPI", "Python", "Chroma DB", "LLM", "Docker", "NLP"],
+        impact: "Ensures model performance and reliability in production",
+        tags: ["Python", "Hugging Face", "MLflow", "Kubernetes", "Prometheus", "Grafana"],
+        link: "https://github.com/Lhcenzetta/pipeline-NLP-avec-MLOps",
+        github: "https://github.com/Lhcenzetta/pipeline-NLP-avec-MLOps"
+    },
+    {
+        title: "RaG-IT-assistant: Intelligent IT Support RAG Assistant",
+        category: "AI/ML",
+        description: "An intelligent internal assistant built using a Retrieval-Augmented Generation (RAG) architecture to provide reliable answers to IT technicians' questions.",
+        highlights: [
+            "RAG architecture with vector indexing into ChromaDB",
+            "Data pipeline for PDF text extraction and embedding generation",
+            "Semantic search for accurate and context-aware responses"
+        ],
+        impact: "Provides instant IT support via documentation retrieval",
+        tags: ["Python", "FastAPI", "Apache Spark", "ChromaDB", "Docker", "RAG"],
         link: "https://github.com/Lhcenzetta/RaG-IT-assistant",
         github: "https://github.com/Lhcenzetta/RaG-IT-assistant"
-    },
-    {
-        title: "Delivery-Time-Prediction: Predictive Analytics",
-        category: "Machine Learning",
-        description: "A machine learning project that predicts delivery times based on distance, traffic, and weather using regression analysis and hyperparameter tuning.",
-        highlights: [
-            "Compared RandomForestRegressor and SVR models",
-            "Implemented GridSearchCV with 5-fold cross-validation",
-            "Automated performance validation with GitHub Actions"
-        ],
-        impact: "Improves customer satisfaction via accurate estimates",
-        tags: ["Python", "Scikit-learn", "Pandas", "GridSearchCV", "RandomForest"],
-        link: "https://github.com/Lhcenzetta/Delivery-Time-Prediction",
-        github: "https://github.com/Lhcenzetta/Delivery-Time-Prediction"
     }
 ];
 

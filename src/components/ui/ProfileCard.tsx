@@ -4,14 +4,15 @@ import { motion } from "framer-motion";
 
 export default function ProfileCard() {
     const technologies = [
-        "React/Next.js",
-        "FastAPI",
         "Python",
+        "FastAPI",
         "Scikit-learn",
-        "Google Gemini AI",
-        "TypeScript",
+        "PyTorch",
+        "Next.js",
         "Docker",
-        "PostgreSQL"
+        "MLflow",
+        "Azure Cloud",
+        "OpenTelemetry"
     ];
 
     return (

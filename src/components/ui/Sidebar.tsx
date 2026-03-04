@@ -5,8 +5,8 @@ import { Code, Layers, Briefcase, ArrowRight, Mail } from "lucide-react";
 
 const coreTech = [
     "Python", "FastAPI", "Next.js",
-    "Scikit-learn", "Google Gemini", "Docker",
-    "PostgreSQL", "TypeScript"
+    "Scikit-learn", "PyTorch", "Docker",
+    "PostgreSQL", "Azure Cloud", "MLOps"
 ];
 
 const stats = [

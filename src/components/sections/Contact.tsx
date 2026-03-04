@@ -71,7 +71,7 @@ export default function Contact() {
                             </div>
                             <div>
                                 <h2 className="text-3xl font-bold text-white tracking-tight">Initialize Communication</h2>
-                                <p className="text-sm text-zinc-500 mt-1">Ready to collaborate on intelligent systems</p>
+                                <p className="text-sm text-zinc-500 mt-1">Available for worldwide AI, ML & Full-Stack collaborations</p>
                             </div>
                         </div>
 

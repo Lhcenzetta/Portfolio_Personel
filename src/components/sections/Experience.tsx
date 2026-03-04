@@ -5,6 +5,24 @@ import { Download, ExternalLink, Calendar, Briefcase } from "lucide-react";
 
 const experiences = [
     {
+        role: "AI & Machine Learning Developer",
+        company: "Simplon Maghreb — Agadir, Morocco",
+        date: "October 2025 – Present",
+        description: [
+            "Developed and deployed backend applications using Python and FastAPI for academic and production-grade projects, focusing on AI and Machine Learning solutions",
+            "Designed and implemented AI systems with a focus on clean architecture and real-world usage",
+            "Built machine learning pipelines including data preprocessing, training, evaluation, and deployment",
+            "Tracked experiments, metrics, and models using MLflow",
+            "Developed FastAPI backends to expose models and system metrics (latency, performance)",
+            "Implemented RESTful APIs with JWT authentication and full database integration, following security best practices",
+            "Designed relational database schemas using PostgreSQL and SQLAlchemy ORM, optimizing for performance and maintainability",
+            "Containerized applications with Docker, enabling consistent and reproducible environments across development and deployment",
+            "Applied software engineering best practices including modular architecture, version control with Git, and thorough API documentation",
+            "Automated testing and deployment pipelines using GitHub Actions for evaluation and deployment readiness"
+        ],
+        skills: ["Python", "FastAPI", "Machine Learning", "MLOps", "PostgreSQL", "Docker", "CI/CD"]
+    },
+    {
         role: "AI & Data Engineering",
         company: "Independent Projects",
         date: "2024 – Present",
@@ -29,18 +47,6 @@ const experiences = [
             "Applied Git & GitHub workflows for version control and project organization"
         ],
         skills: ["React", "FastAPI", "PostgreSQL", "Git"]
-    },
-    {
-        role: "Engineering Foundations & Applied Systems",
-        company: "Background",
-        date: "Engineering Mindset",
-        description: [
-            "Strong technical foundation in physics, electronics, and IT",
-            "Experience analyzing systems, debugging, and optimizing performance",
-            "Applied engineering thinking to software and AI projects",
-            "Comfortable moving between low-level concepts and high-level system design"
-        ],
-        skills: ["Systems Thinking", "Debugging", "Optimization", "Engineering Physics"]
     }
 ];
 
@@ -101,7 +107,7 @@ export default function Experience() {
                     <motion.a
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        href="/resume.pdf"
+                        href="/Lahcen_AitZetta_AENG.pdf"
                         target="_blank"
                         className="group relative inline-flex items-center justify-center w-full sm:w-auto gap-3 px-8 py-4 rounded-full font-semibold text-sm transition-all duration-300 overflow-hidden"
                     >
